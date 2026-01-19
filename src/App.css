@@ -1,0 +1,221 @@
+/* src/App.css - FINAL PRO VERSION */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --color-danger: #ff0000;
+  --color-scan: #00ff00;
+  --bg-dark: #050505;
+  --color-gold: #ffd700;
+  --grid-border: rgba(255, 255, 255, 0.1);
+}
+
+html, body, #root {
+  width: 100%; height: 100%; margin: 0; padding: 0;
+  background: var(--bg-dark); color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden; user-select: none;
+}
+
+/* --- MÀN HÌNH CHÍNH --- */
+.maze-screen {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: 40px; /* Đẩy nội dung xuống */
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+
+.maze-screen::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none;
+}
+
+.hud-title {
+  font-size: 3.5rem; color: var(--color-danger); text-transform: uppercase;
+  text-shadow: 0 0 10px var(--color-danger); letter-spacing: 5px;
+  margin-bottom: 10px; z-index: 10; margin-top: 0;
+}
+
+/* --- MÊ CUNG (GRID SIÊU TO) --- */
+.maze-grid {
+  display: grid; 
+  /* Kích thước ô tối thiểu 150px để chữ to */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 10px;
+  
+  width: 98%; max-width: 1800px; /* Mở rộng tối đa */
+  height: 75vh; /* Cao hơn cho dễ nhìn */
+  
+  padding: 20px; border: 2px solid #333; overflow-y: auto; z-index: 10;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8); position: relative; 
+  transition: opacity 0.5s; margin-top: 5px;
+}
+
+.room-cell {
+  background: rgba(255, 255, 255, 0.05); border: 1px solid var(--grid-border);
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px;
+  font-size: 1.5rem; font-weight: bold; /* Chữ tên người to */
+  color: #888; position: relative; overflow: hidden; transition: all 0.1s;
+}
+
+/* --- KHI ROBOT ĐANG Ở ĐÓ (Sáng rực) --- */
+.room-scanned {
+  background: rgba(0, 255, 0, 0.3);
+  border-color: var(--color-scan);
+  color: #fff;
+  box-shadow: 0 0 20px var(--color-scan);
+  z-index: 5;
+}
+
+/* --- VẾT XƯỚC ĐỂ LẠI (TRACE) --- */
+.room-trace {
+  background: rgba(0, 20, 0, 0.6); /* Tối đi */
+  color: #555;
+  border-color: #444;
+  
+  /* Hiệu ứng vết xước chéo */
+  background-image: 
+    linear-gradient(45deg, transparent 48%, #003300 49%, #005500 50%, transparent 51%),
+    linear-gradient(-60deg, transparent 40%, #003300 41%, #005500 42%, transparent 43%);
+  background-size: 100% 100%;
+  
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+}
+
+/* --- KHI BỊ CHỌN (KILL) --- */
+.room-killed {
+  background: rgba(255, 0, 0, 0.6) !important;
+  border: 4px solid var(--color-danger) !important;
+  color: #fff !important; font-weight: bold; font-size: 2rem !important;
+  box-shadow: 0 0 50px var(--color-danger), inset 0 0 30px var(--color-danger);
+  animation: killFlash 0.1s infinite alternate; z-index: 20; transform: scale(1.1);
+}
+@keyframes killFlash { from { opacity: 1; } to { opacity: 0.7; } }
+
+/* --- TÂM NGẮM (ROBOT) --- */
+.robot-crosshair {
+  position: absolute; width: 150px; height: 150px; /* Khớp với ô 150px */
+  border: 2px solid var(--color-scan);
+  box-shadow: 0 0 30px var(--color-scan), inset 0 0 20px var(--color-scan);
+  pointer-events: none; z-index: 50;
+  transition: all 0.03s linear; /* Cực nhanh để khớp với tốc độ 30ms */
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  
+  /* Hiệu ứng kính vỡ ảo */
+  backdrop-filter: blur(2px) hue-rotate(90deg);
+  background: rgba(0, 255, 0, 0.1);
+  animation: scan-glitch 0.2s infinite linear;
+}
+
+/* Vết xước trên kính robot */
+.robot-crosshair::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: 
+        linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.8) 48%, transparent 52%),
+        linear-gradient(-60deg, transparent 40%, rgba(255, 255, 255, 0.6) 42%, transparent 45%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.2) 3px, transparent 4px);
+    background-size: 150% 150%;
+    mix-blend-mode: overlay; opacity: 0.8;
+}
+.robot-crosshair::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 15px; height: 15px; background: var(--color-scan); box-shadow: 0 0 10px var(--color-scan); border-radius: 50%; }
+
+.crosshair-kill { border-color: var(--color-danger); box-shadow: 0 0 50px var(--color-danger), inset 0 0 30px var(--color-danger); background: rgba(255, 0, 0, 0.2); backdrop-filter: blur(3px) hue-rotate(0deg); animation: shake 0.1s infinite; }
+.crosshair-kill::before { background-image: linear-gradient(45deg, transparent 45%, rgba(255, 0, 0, 0.8) 48%, transparent 52%), linear-gradient(-60deg, transparent 40%, rgba(255, 0, 0, 0.6) 42%, transparent 45%); }
+.crosshair-kill::after { background: var(--color-danger); box-shadow: 0 0 20px var(--color-danger); }
+
+/* --- LOG --- */
+.scan-log {
+  position: absolute; bottom: 12%; color: var(--color-scan); font-size: 1.5rem;
+  text-shadow: 0 0 5px var(--color-scan); background: rgba(0,0,0,0.8); padding: 5px 30px; border-left: 5px solid var(--color-scan);
+}
+
+/* --- RESULT POPUP (HIỆN TÊN) --- */
+.result-alert {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: #000; border: 4px solid var(--color-danger); padding: 50px 80px; text-align: center; z-index: 100; min-width: 500px;
+  box-shadow: 0 0 50px var(--color-danger), 0 0 0 1000vh rgba(0,0,0,0.85); animation: popIn 0.2s;
+}
+.alert-title { color: var(--color-danger); font-size: 3rem; margin-bottom: 25px; font-weight: bold; border-bottom: 2px solid #333; padding-bottom: 10px; letter-spacing: 5px; }
+.glitch-text { font-family: 'Courier New', monospace; color: var(--color-scan); font-size: 3rem; letter-spacing: 2px; word-break: break-all; animation: shake 0.1s infinite; }
+.final-text { color: #fff; font-size: 4.5rem; text-transform: uppercase; letter-spacing: 5px; font-weight: bold; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); animation: flashName 0.5s; }
+
+/* --- FULLSCREEN QUIZ (CÂU HỎI SIÊU TO) --- */
+.fullscreen-mode {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  background: #000; z-index: 9000; 
+  display: flex; flex-direction: column; align-items: center; justify-content: center; 
+  padding: 50px; overflow-y: auto; box-sizing: border-box; 
+  animation: zoomIn 0.5s;
+}
+.player-indicator { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; color: #888; letter-spacing: 3px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.big-quest-container { width: 95%; max-width: 1600px; text-align: center; margin-top: 50px; }
+.big-quest-text { font-size: 3.5rem; color: #fff; line-height: 1.3; margin-bottom: 60px; font-weight: bold; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
+/* Grid đáp án */
+.big-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+
+/* Nút đáp án */
+.big-option-btn {
+  background: rgba(255, 255, 255, 0.05); 
+  border: 3px solid #444; 
+  color: #eee; 
+  padding: 40px; 
+  font-family: 'Share Tech Mono', monospace; 
+  font-size: 2.2rem; font-weight: bold; /* Nội dung to */
+  cursor: pointer; text-align: left; transition: all 0.2s; display: flex; align-items: center; border-radius: 10px;
+}
+/* A, B, C, D Vàng óng */
+.opt-prefix { 
+  color: var(--color-gold); 
+  font-size: 3.5rem; font-weight: 900; 
+  margin-right: 30px; 
+  text-shadow: 0 0 15px var(--color-gold);
+}
+.big-option-btn:hover { background: rgba(0, 255, 0, 0.1); color: #fff; border-color: var(--color-scan); transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0, 255, 0, 0.2); }
+
+/* Kết quả */
+.big-result-container { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.big-success-text { font-size: 8rem; color: var(--color-scan); margin: 0; text-transform: uppercase; animation: popIn 0.3s; }
+.big-fail-text { font-size: 8rem; color: var(--color-danger); margin: 0; text-transform: uppercase; animation: shake 0.5s; }
+.big-correct-note { font-size: 2.5rem; color: #888; margin-top: 20px; }
+.big-result-buttons { margin-top: 60px; margin-bottom: 80px; display: flex; gap: 40px; }
+
+/* Nút Bấm Chung */
+.hud-btn {
+  padding: 15px 40px; background: rgba(0,0,0,0.5); border: 2px solid var(--color-scan); color: var(--color-scan);
+  font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; cursor: pointer; text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s;
+}
+.hud-btn:hover { background: var(--color-scan); color: #000; box-shadow: 0 0 30px var(--color-scan); }
+
+/* Leaderboard */
+.score-badge { position: absolute; top: 30px; right: 60px; background: rgba(0, 0, 0, 0.9); border: 2px solid var(--color-scan); padding: 15px 30px; font-size: 2rem; color: var(--color-scan); font-weight: bold; box-shadow: 0 0 20px var(--color-scan); z-index: 9999; border-radius: 5px; }
+.leaderboard-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 99999; animation: fadeIn 0.3s; }
+.leaderboard-box { width: 70%; max-width: 900px; background: #050505; border: 3px solid var(--color-gold); padding: 40px; text-align: center; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2), inset 0 0 20px rgba(255, 215, 0, 0.1); border-radius: 10px; }
+.leaderboard-title { font-size: 3.5rem; color: var(--color-gold); margin-bottom: 30px; text-transform: uppercase; text-shadow: 0 0 20px var(--color-gold); font-weight: bold; letter-spacing: 5px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+.leaderboard-list { max-height: 50vh; overflow-y: auto; margin-bottom: 30px; }
+.rank-table { width: 100%; border-collapse: collapse; font-size: 1.5rem; color: #fff; }
+.rank-table th { text-align: left; padding: 15px; color: #666; font-size: 1.2rem; border-bottom: 2px solid #333; }
+.rank-table td { padding: 20px 15px; border-bottom: 1px solid #222; text-align: left; }
+.rank-row.rank-1 td { color: var(--color-gold); text-shadow: 0 0 15px var(--color-gold); font-weight: bold; font-size: 1.8rem; }
+.rank-row.rank-2 td { color: #c0c0c0; text-shadow: 0 0 15px #c0c0c0; font-weight: bold; }
+.rank-row.rank-3 td { color: #cd7f32; text-shadow: 0 0 15px #cd7f32; font-weight: bold; }
+.btn-close-lb { padding: 15px 60px; background: transparent; border: 2px solid var(--color-gold); color: var(--color-gold); font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; cursor: pointer; text-transform: uppercase; transition: all 0.3s; }
+.btn-close-lb:hover { background: var(--color-gold); color: #000; box-shadow: 0 0 30px var(--color-gold); }
+
+@keyframes scan-glitch {
+  0% { transform: translate(-50%, -50%) skew(0deg); clip-path: inset(0 0 0 0); }
+  20% { transform: translate(-52%, -49%) skew(2deg); clip-path: inset(10% 0 30% 0); }
+  40% { transform: translate(-48%, -51%) skew(-2deg); clip-path: inset(0 0 0 0); }
+  60% { transform: translate(-51%, -48%) skew(1deg); clip-path: inset(50% 0 70% 0); }
+  80% { transform: translate(-49%, -52%) skew(-1deg); clip-path: inset(0 0 0 0); }
+  100% { transform: translate(-50%, -50%) skew(0deg); clip-path: inset(0 0 0 0); }
+}
+@keyframes popIn { from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+@keyframes shake { 0% { transform: translate(1px, 1px); } 25% { transform: translate(-1px, -2px); } 50% { transform: translate(-3px, 0px); } 75% { transform: translate(3px, 2px); } 100% { transform: translate(1px, -1px); } }
+@keyframes flashName { 0% { opacity: 0; transform: scale(0.5); color: var(--color-scan); } 50% { opacity: 1; transform: scale(1.1); color: #fff; } 100% { transform: scale(1); color: #fff; } }
+@keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
