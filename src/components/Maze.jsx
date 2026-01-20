@@ -171,16 +171,6 @@ const questionsData = [
         c: 0
     },
     {
-        q: "Vị thế của nhân vật trữ tình trong 'Mộ' và 'Nguyên tiêu' khác nhau thế nào?",
-        o: [
-            "Người tù bị động >< Lãnh tụ chủ động.", // ĐÚNG
-            "Người dân thường >< Quan lại phong kiến.", 
-            "Người đi đường >< Người ngồi nhà.", 
-            "Nạn nhân >< Kẻ chiến thắng.", 
-        ],
-        c: 0
-    },
-    {
         q: "Bản dịch 'Trăng ngân đầy thuyền' (Nguyên tiêu) thêm yếu tố nào sai nguyên tác?",
         o: [
             "Âm thanh (Ngân).", // ĐÚNG
@@ -219,7 +209,59 @@ const questionsData = [
             "Từ mặt đất bay lên bầu trời.", 
         ],
         c: 0
+    },
+    // --- 5 CÂU SIÊU KHÓ (BẪY CÂU CHỮ TINH VI) ---
+    {
+        q: "Trong bài 'Mộ', sự vận động của hình tượng thơ từ 'cánh chim, chòm mây' đến 'lò than rực hồng' phản ánh quy luật nào trong thi pháp của Bác?",
+        o: [
+            "Vận động từ thiên nhiên hoang sơ đến cuộc sống con người, từ nỗi buồn đến niềm vui.", // ĐÚNG (Chuẩn ý: Thiên nhiên -> Con người)
+            "Vận động từ thiên nhiên hoang sơ đến cuộc sống con người, từ tĩnh tại đến hư ảo.", // SAI (Sai chữ 'hư ảo', lò than là thực)
+            "Vận động từ không gian vũ trụ đến không gian đời thường, từ ánh sáng vào bóng tối.", // SAI (Ngược: Từ bóng tối ra ánh sáng)
+            "Vận động từ hình ảnh ước lệ cổ điển đến hình ảnh hiện thực, từ niềm vui đến nỗi buồn.", // SAI (Ngược cảm xúc)
+        ],
+        c: 0
+    },
+    {
+        q: "Vì sao nói bản dịch 'Giữa dòng bàn bạc việc quân' (Nguyên tiêu) đã làm giảm đi 'chất thép' so với nguyên tác 'Yên ba thâm xứ'?",
+        o: [
+            "Vì nó làm mất đi không gian hùng vĩ, tráng lệ của dòng sông đêm trăng.", // NHIỄU (Tập trung vào cảnh)
+            "Vì nó làm mất đi tính chất bí mật, thâm nghiêm và sự tĩnh lặng cần thiết của việc quân.", // ĐÚNG (Chuẩn ý: Bí mật/Thâm nghiêm)
+            "Vì nó làm mất đi tính chất lãng mạn, bay bổng và sự giao hòa thiên nhiên của thi sĩ.", // SAI (Ngược: Nguyên tác nhấn mạnh việc quân ở câu 3)
+            "Vì nó làm mất đi không gian mênh mông, bát ngát của khói sóng mùa xuân.", // NHIỄU
+        ],
+        c: 1
+    },
+    {
+        q: "Trong nguyên tác bài 'Nguyên tiêu', cụm từ 'Nguyệt mãn thuyền' (Trăng đầy thuyền) ở câu kết có mối liên hệ logic thế nào với câu 3?",
+        o: [
+            "Việc quân vừa dứt, con thuyền quân sự lập tức hóa thành con thuyền thi ca chứa đầy trăng.", // ĐÚNG (Sự chuyển hóa tức thời)
+            "Việc quân đang bàn, con thuyền quân sự song hành cùng con thuyền thi ca chứa đầy trăng.", // SAI (Sai thời điểm: 'đang bàn' vs 'vừa dứt')
+            "Việc quân vừa dứt, con thuyền thi ca biến mất để nhường chỗ cho ánh trăng tràn ngập.", // SAI (Thuyền không biến mất)
+            "Việc quân căng thẳng, ánh trăng làm dịu đi không khí nặng nề trên con thuyền.", // SAI (Suy diễn không có trong văn bản phân tích)
+        ],
+        c: 0
+    },
+    {
+        q: "Điểm khác biệt tinh tế nhất giữa 'cánh chim' trong thơ cổ và 'cánh chim' trong bài 'Mộ' của Bác là gì?",
+        o: [
+            "Thơ cổ: Cánh chim là biểu tượng của sự vĩnh cửu - Thơ Bác: Cánh chim là thực thể sống động.", // NHIỄU
+            "Thơ cổ: Cánh chim bay về nơi vô định - Thơ Bác: Cánh chim có điểm về cụ thể (về rừng/về tổ).", // ĐÚNG (Ý nghĩa sự sống/điểm tựa)
+            "Thơ cổ: Cánh chim gợi nỗi buồn ly biệt - Thơ Bác: Cánh chim gợi sự tự do tuyệt đối.", // SAI (Người tù không thấy tự do qua chim, mà thấy nhịp sống)
+            "Thơ cổ: Cánh chim bay vào hư không - Thơ Bác: Cánh chim bay ngược gió.", // NHIỄU
+        ],
+        c: 1
+    },
+    {
+        q: "Nếu không hiểu chữ 'Hồng' (Mộ) là động từ (nổi lửa) mà hiểu là tính từ (màu hồng), thì bức tranh thơ sẽ thiếu đi yếu tố cốt lõi nào?",
+        o: [
+            "Thiếu đi sự ấm áp của tình người trong đêm tối lạnh lẽo.", // NHIỄU (Đúng nhưng chưa đủ ý đồ nghệ thuật)
+            "Thiếu đi sự chủ động của con người trong việc xua tan bóng tối và giá lạnh.", // ĐÚNG (Nhấn mạnh sự CHỦ ĐỘNG/Sức mạnh con người)
+            "Thiếu đi vẻ đẹp rực rỡ của màu sắc tương phản với màn đêm núi rừng.", // SAI (Chỉ nói về thẩm mỹ, không nói về tư tưởng)
+            "Thiếu đi tính chất cổ điển trang trọng của thể thơ Đường luật.", // SAI (Cổ điển thường ít dùng hình ảnh lò than đời thường)
+        ],
+        c: 1
     }
+
 ];
 
 // --- CẤU HÌNH GIAN LẬN (MULTI TARGET) ---
@@ -256,8 +298,29 @@ const Maze = () => {
 
   const getUniqueQuestion = () => {
       let queue = [...questionQueue];
+      // Nếu hết câu hỏi thì nạp lại và trộn thứ tự câu hỏi
       if (queue.length === 0) queue = [...questionsData].sort(() => Math.random() - 0.5);
-      const nextQ = queue[0];
+      
+      const rawQ = queue[0];
+
+      // --- BẮT ĐẦU LOGIC TRỘN ĐÁP ÁN (SHUFFLE OPTIONS) ---
+      // 1. Tạo mảng tạm lưu nội dung đáp án kèm dấu hiệu nhận biết đáp án đúng
+      const optionsWithStatus = rawQ.o.map((opt, index) => ({
+          text: opt,
+          isCorrect: index === rawQ.c
+      }));
+
+      // 2. Trộn ngẫu nhiên mảng tạm này
+      const shuffledOptions = optionsWithStatus.sort(() => Math.random() - 0.5);
+
+      // 3. Tạo object câu hỏi mới với thứ tự đáp án đã trộn
+      const nextQ = {
+          ...rawQ,
+          o: shuffledOptions.map(item => item.text), // Mảng text mới
+          c: shuffledOptions.findIndex(item => item.isCorrect) // Tìm index mới của đáp án đúng
+      };
+      // --- KẾT THÚC LOGIC TRỘN ---
+
       setQuestionQueue(queue.slice(1));
       return nextQ;
   };
