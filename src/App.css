@@ -219,3 +219,95 @@ html, body, #root {
 @keyframes flashName { 0% { opacity: 0; transform: scale(0.5); color: var(--color-scan); } 50% { opacity: 1; transform: scale(1.1); color: #fff; } 100% { transform: scale(1); color: #fff; } }
 @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+/* --- VẾT TÀN ẢNH (AFTERIMAGE) - ĐÃ SỬA --- */
+.room-trace {
+  /* Xóa bỏ nền sọc chéo gây khó nhìn cũ */
+  background-image: none !important;
+
+  /* Hiệu ứng tàn ảnh mới: Xanh mờ ảo, sạch sẽ */
+  background: rgba(0, 255, 0, 0.1); 
+  color: #e0ffe0; /* Chữ hơi xanh nhẹ cho tiệp màu */
+  border-color: rgba(0, 255, 0, 0.4);
+  
+  /* Tạo glow nhẹ còn sót lại (như bóng ma) */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.15), inset 0 0 10px rgba(0, 255, 0, 0.05);
+  
+  /* Animation làm dịu dần từ lúc quét xong */
+  animation: traceFade 0.6s ease-out;
+}
+
+/* Hiệu ứng mờ dần từ sáng chói xuống tàn ảnh */
+@keyframes traceFade {
+  0% {
+    background: rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 30px var(--color-scan);
+    transform: scale(1.02);
+  }
+  100% {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+    transform: scale(1);
+  }
+}
+/* --- SỬA LẠI PHẦN MÊ CUNG (GRID) --- */
+.maze-grid {
+  display: grid; 
+  /* Giữ nguyên logic chia cột nhưng cho phép giãn rộng */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 15px;
+  
+  /* THAY ĐỔI Ở ĐÂY: Mở rộng hết biên trái phải */
+  width: 99vw; /* Chiếm 99% chiều rộng màn hình */
+  max-width: none; /* Bỏ giới hạn 1800px cũ */
+  height: 80vh; /* Tăng chiều cao lên chút nữa */
+  
+  padding: 10px; 
+  border: none; /* Bỏ viền bao ngoài cho đỡ rối khi full màn */
+  margin-top: 10px;
+}
+
+/* Tăng kích thước chữ tên người trong ô */
+.room-cell {
+  font-size: 2rem; /* To hơn (cũ là 1.5rem) */
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* --- SỬA LẠI PHẦN CÂU HỎI (FULLSCREEN) --- */
+
+/* Container chứa câu hỏi mở rộng tối đa */
+.big-quest-container { 
+  width: 98%; 
+  max-width: none; /* Bỏ giới hạn chiều rộng */
+  margin-top: 20px; 
+}
+
+/* Chữ câu hỏi siêu to khổng lồ */
+.big-quest-text { 
+  font-size: 4.5rem; /* Tăng từ 3.5rem lên 4.5rem */
+  line-height: 1.2; 
+  margin-bottom: 40px; 
+  padding: 0 40px; /* Thêm padding để chữ không dính sát lề màn hình */
+}
+
+/* Lưới đáp án giãn rộng ra */
+.big-options-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px; /* Giảm khoảng cách giữa các nút để nút to hơn */
+  width: 100%;
+  padding: 0 20px; /* Cách lề màn hình một chút */
+}
+
+/* Nút đáp án to hơn */
+.big-option-btn {
+  padding: 50px 40px; /* Nút dày hơn */
+  font-size: 2.8rem; /* Chữ đáp án to hơn (cũ là 2.2rem) */
+  border-width: 4px; /* Viền dày hơn cho rõ */
+}
+
+/* Chữ A, B, C, D đầu dòng */
+.opt-prefix { 
+  font-size: 4rem; /* To hơn nữa (cũ là 3.5rem) */
+  margin-right: 40px; 
+}
