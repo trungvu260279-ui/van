@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import FunnyCandle from './FunnyCandle'; // Đảm bảo bạn đã tạo file FunnyCandle.jsx cùng thư mục
 
 // --- DỮ LIỆU CỨNG ---
 const names = [
@@ -10,81 +11,214 @@ const names = [
 ];
 
 // --- BỘ CÂU HỎI MỚI (15 CÂU VỀ NGUYÊN TIÊU) ---
+// --- BỘ CÂU HỎI MỚI (ĐÃ CÂN CHỈNH ĐỘ KHÓ & BẪY CÂU CHỮ) ---
 const questionsData = [
-    { 
-        q: "Trong câu thơ \"Xuân giang xuân thủy tiếp xuân thiên\", việc lặp lại 3 lần điệp từ \"xuân\" mang lại hiệu quả nghệ thuật gì?", 
-        o: ["Gợi sự lạnh lẽo, hiu hắt của núi rừng Việt Bắc.", "Gợi tả sức sống tràn trề, sự giao hòa không ranh giới.", "Nhấn mạnh sự thay đổi nhanh chóng của thời gian.", "Thể hiện nỗi nhớ quê hương da diết."], 
-        c: 1 // Đáp án B
+    // --- LOẠI 1: BẪY "SONG SINH" (NHÌN GIỐNG HỆT NHAU, SAI 1 TỪ CUỐI) ---
+    {
+        q: "Nếu hiểu chữ 'hồng' (Mộ) chỉ là tính từ chỉ màu sắc thay vì động từ (nổi lửa) thì sai lệch lớn nhất là gì?",
+        o: [
+            "Làm mất đi vẻ đẹp cổ điển và tính ước lệ của thơ Đường.", // Nhiễu
+            "Mất đi sự vận động của hình tượng thơ từ bóng tối ra ánh sáng.", // ĐÚNG (Ánh sáng)
+            "Mất đi sự vận động của hình tượng thơ từ bóng tối ra màn đêm.", // SAI (Giống câu trên, thay 'ánh sáng' bằng 'màn đêm')
+            "Làm giảm đi tính nhạc của bài thơ.", // Nhiễu
+        ],
+        c: 1
     },
-    { 
-        q: "Hình ảnh \"nguyệt chính viên\" (trăng vừa đúng độ tròn đầy) phản ánh điều gì về cảnh sắc thiên nhiên?", 
-        o: ["Vẻ đẹp viên mãn, căng tràn và tươi sáng nhất.", "Ánh trăng đang mờ dần do sương mù che phủ.", "Gợi sự bắt đầu của một chu kỳ mới đầy gian khổ.", "Thể hiện sự tàn lụi, héo úa của thời gian."], 
-        c: 0 // Đáp án A
+    {
+        q: "Hình ảnh 'cánh chim' trong bài 'Mộ' và 'người tù' có sự tương phản nào?",
+        o: [
+            "Cánh chim tự do về rừng - Người tù bị giải đi vô định.", // ĐÚNG
+            "Cánh chim tự do về rừng - Người tù được tha bổng về nhà.", // SAI (Giống vế đầu, sai vế sau)
+            "Cánh chim mệt mỏi - Người tù khỏe khoắn.", // Nhiễu
+            "Chim bay ngược gió - Người đi xuôi gió.", // Nhiễu
+        ],
+        c: 0
     },
-    { 
-        q: "Tại sao địa điểm bàn việc quân lại được tác giả chọn là \"yên ba thâm xứ\" (nơi khói sóng thăm thẳm)?", 
-        o: ["Miêu tả sự cô độc và lạc lối của con người.", "Đây là vị trí thuận lợi nhất để tấn công.", "Tạo không gian thâm nghiêm, tĩnh lặng, hệ trọng.", "Khẳng định sự tách biệt giữa thiên nhiên và chiến tranh."], 
-        c: 2 // Đáp án C
+    {
+        q: "Tại sao nói bài 'Nguyên tiêu' có sự kết hợp giữa chiến sĩ và thi nhân?",
+        o: [
+            "Vì Bác bàn việc quân xong thì ngắm trăng làm thơ.", // Nhiễu
+            "Vì trong cảnh khói sóng việc quân, vẫn có trăng tràn đầy thuyền.", // ĐÚNG
+            "Vì trong cảnh khói sóng việc quân, vẫn có súng đạn đầy thuyền.", // SAI (Giống cấu trúc, thay 'trăng' bằng 'súng đạn')
+            "Vì Bác vừa đánh giặc vừa viết văn.", // Nhiễu
+        ],
+        c: 1
     },
-    { 
-        q: "Hình ảnh \"nguyệt mãn thuyền\" trong câu thơ cuối gợi lên điều gì về kết quả cuộc họp?", 
-        o: ["Sự mệt mỏi, kiệt sức của các chiến sĩ.", "Sự cô đơn, tĩnh lặng của con thuyền.", "Niềm tin lạc quan, sự viên mãn và thành công rạng rỡ.", "Sự bế tắc, chưa tìm được lối ra."], 
-        c: 2 // Đáp án C
+    {
+        q: "Sự vận động thời gian trong bài 'Mộ' đi theo chiều hướng nào?",
+        o: [
+            "Từ chiều tối đến đêm khuya, từ buồn sang vui.", // ĐÚNG
+            "Từ chiều tối đến đêm khuya, từ vui sang buồn.", // SAI (Ngược vế sau)
+            "Từ sáng sớm đến chiều tà.", 
+            "Thời gian ngưng đọng bất biến.", 
+        ],
+        c: 0
     },
-    { 
-        q: "Theo chú thích, từ \"mãn\" được sử dụng như một động từ nhằm diễn tả điều gì?", 
-        o: ["Ánh trăng đang tràn xuống và làm đầy ắp con thuyền.", "Sự biến mất dần của ánh sáng.", "Ánh trăng đang đứng yên, tỏa sáng cố định.", "Tiếng vang vọng của ánh trăng."], 
-        c: 0 // Đáp án A
+
+    // --- LOẠI 2: ĐỘ DÀI NGẮN LỘN XỘN (GÂY NHIỄU TÂM LÝ) ---
+    {
+        q: "Việc dịch 'Sơn thôn thiếu nữ' thành 'Cô em xóm núi' (Mộ) gây ra hạn chế gì lớn nhất?",
+        o: [
+            "Mất trang trọng.", // Ngắn - ĐÚNG (Súc tích)
+            "Làm mất đi vẻ đẹp hiện đại, khỏe khoắn và tư thế chủ động của người lao động trong nguyên tác.", // Dài - Nhiễu (Nghe rất hay nhưng sai bản chất 'hiện đại')
+            "Sai ngữ pháp.", // Ngắn - Nhiễu
+            "Làm nhân vật già đi.", // Ngắn - Nhiễu
+        ],
+        c: 0
     },
-    { 
-        q: "Mối tương quan giữa \"chiến sĩ\" và \"nghệ sĩ\" trong câu \"Yên ba thâm xứ đàm quân sự\" là gì?", 
-        o: ["Tách biệt hoàn toàn, xong việc quân mới làm thơ.", "Chiến sĩ phải hy sinh tâm hồn nghệ sĩ.", "Hòa quyện làm một: làm cách mạng giữa không gian thơ mộng.", "Tư cách nghệ sĩ lấn át tư cách chiến sĩ."], 
-        c: 2 // Đáp án C
+    {
+        q: "Điệp từ 'xuân' 3 lần trong 'Nguyên tiêu' có tác dụng gì?",
+        o: [
+            "Gợi sức sống lan tỏa, kết nối không gian thành khối thống nhất.", // Dài - ĐÚNG
+            "Tăng tính nhạc.", // Ngắn - Nhiễu
+            "Nhấn mạnh nỗi buồn mùa xuân.", // Ngắn - Nhiễu
+            "Tạo nhịp điệu dồn dập, hối hả như bước chân hành quân của người chiến sĩ.", // Dài - Nhiễu
+        ],
+        c: 0
     },
-    { 
-        q: "Việc lựa chọn thể thơ Thất ngôn tứ tuyệt mang phong vị Đường thi có ý nghĩa gì?", 
-        o: ["Nhằm che giấu các thông tin quân sự nhạy cảm.", "Tạo vẻ đẹp cổ điển nhưng chứa nội dung hiện đại.", "Thể hiện sự cũ kỹ trong tư duy sáng tác.", "Chứng tỏ khả năng sử dụng chữ Hán bậc thầy."], 
-        c: 1 // Đáp án B
+    {
+        q: "Chữ 'Quyện' trong 'Mộ' nếu dịch là 'trôi nhẹ' thì mất đi ý nghĩa gì?",
+        o: [
+            "Sự mệt mỏi.", // Ngắn - Nhiễu
+            "Sự gắn bó, vấn vương của chòm mây với bầu trời, ẩn dụ cho nỗi lòng Bác.", // Dài - ĐÚNG
+            "Vẻ đẹp thiên nhiên hùng vĩ, tráng lệ của núi rừng lúc chiều tà.", // Dài - Nhiễu
+            "Sự lạnh lẽo.", // Ngắn - Nhiễu
+        ],
+        c: 1
     },
-    { 
-        q: "Hình ảnh \"trăng đầy thuyền\" ở cuối bài thơ là biểu tượng cho điều gì?", 
-        o: ["Sự đối lập giữa con người và vũ trụ.", "Tâm hồn phóng khoáng, ung dung và niềm tin chiến thắng.", "Sự ám ảnh về bóng tối và khó khăn.", "Nỗi buồn thầm kín vì gánh vác việc nước."], 
-        c: 1 // Đáp án B
+
+    // --- LOẠI 3: ĐỘ DÀI Y HỆT NHAU (KHÓ ĐOÁN MÒ, PHẢI ĐỌC KỸ) ---
+    {
+        q: "Bản dịch câu 'Yên ba thâm xứ' thành 'Giữa dòng bàn bạc' thiếu sót điều gì?",
+        o: [
+            "Không gian bí mật, thâm nghiêm của việc quân.", // ĐÚNG
+            "Không gian lãng mạn, trữ tình của người thi sĩ.", // (Độ dài tương đương)
+            "Không gian ồn ào, náo nhiệt của buổi thắng trận.", // (Độ dài tương đương)
+            "Không gian rộng lớn, bao la của dòng sông Lô.", // (Độ dài tương đương)
+        ],
+        c: 0
     },
-    { 
-        q: "So sánh \"Dịch nghĩa\" và \"Dịch thơ\" câu 4: Chữ \"ngân\" và chữ \"mãn\" khác nhau thế nào?", 
-        o: ["\"Ngân\" lột tả độ nặng tốt hơn \"mãn\".", "Hai từ hoàn toàn tương đương.", "\"Mãn\" gợi trăng tràn đầy (hữu hình), \"ngân\" gợi vang xa.", "\"Mãn\" gợi sự buồn bã, \"ngân\" gợi sự tươi vui."], 
-        c: 2 // Đáp án C
+    {
+        q: "Hình ảnh 'Nguyệt mãn thuyền' (Trăng đầy thuyền) biểu thị sự chuyển hóa nào?",
+        o: [
+            "Từ con thuyền việc quân thành con thuyền thi ca.", // ĐÚNG
+            "Từ con thuyền nhỏ bé thành con thuyền vĩ đại.", 
+            "Từ con thuyền chiến đấu thành con thuyền du lịch.", 
+            "Từ con thuyền ẩn nấp thành con thuyền công khai.", 
+        ],
+        c: 0
     },
-    { 
-        q: "Nhận xét nào đúng nhất về sự vận động không gian trong bài thơ Nguyên tiêu?", 
-        o: ["Từ không gian bao la sang không gian cụ thể con thuyền.", "Từ sông nước hẹp sang bầu trời rộng mở.", "Không gian hoàn toàn tĩnh tại.", "Từ nơi ánh sáng trăng rằm sang nơi bóng tối."], 
-        c: 0 // Đáp án A
+    {
+        q: "Bút pháp cổ điển thể hiện rõ nhất ở điểm nào trong hai bài thơ?",
+        o: [
+            "Sử dụng thi liệu ước lệ và bút pháp chấm phá.", // ĐÚNG
+            "Sử dụng ngôn ngữ đời thường và tả thực chi tiết.", 
+            "Sử dụng thể thơ tự do và nhịp điệu phá cách.", 
+            "Sử dụng hình ảnh con người làm trung tâm bức tranh.", 
+        ],
+        c: 0
     },
-    { 
-        q: "Thủ pháp \"Thi trung hữu họa\" (trong thơ có họa) thể hiện rõ nhất qua chi tiết nào?", 
-        o: ["Việc liệt kê các mốc thời gian cụ thể.", "Phối hợp mảng màu, ánh sáng: sắc xuân, khói sóng, trăng.", "Mô tả chi tiết các chiến lược quân sự.", "Cách ngắt nhịp đều đặn của thể thơ."], 
-        c: 1 // Đáp án B
+    {
+        q: "Điểm chung về 'thi pháp' của Hồ Chí Minh trong hai bài thơ là gì?",
+        o: [
+            "Luôn vận động hướng về sự sống và ánh sáng.", // ĐÚNG
+            "Luôn tập trung miêu tả nỗi buồn và bóng tối.", 
+            "Luôn sử dụng điển cố điển tích cực kỳ khó hiểu.", 
+            "Luôn đề cao vai trò cá nhân hơn là cộng đồng.", 
+        ],
+        c: 0
     },
-    { 
-        q: "Ý nghĩa từ \"chính\" trong \"nguyệt chính viên\" phản ánh quan điểm thẩm mỹ nào?", 
-        o: ["Coi trọng tính chính xác tuyệt đối của thiên văn.", "Trân trọng khoảnh khắc vẻ đẹp hoàn mỹ, viên mãn nhất.", "Yêu thích vẻ đẹp dở dang, chưa hoàn thiện.", "Sự lo âu khi cái đẹp đạt đến đỉnh cao."], 
-        c: 1 // Đáp án B
+
+    // --- CÁC CÂU HỖN HỢP KHÁC ---
+    {
+        q: "Câu 'Kim dạ nguyên tiêu nguyệt chính viên' nhấn mạnh điều gì?",
+        o: [
+            "Vẻ đẹp tròn đầy viên mãn của trăng rằm.", // ĐÚNG
+            "Nỗi buồn man mác khi trăng sắp tàn.", 
+            "Sự cô đơn của con người dưới trăng.", 
+            "Ánh sáng chói chang làm lu mờ sao.", 
+        ],
+        c: 0
     },
-    { 
-        q: "Tư thế \"quy lai\" (trở về) dưới ánh trăng phản ánh phong thái nào của người lãnh đạo?", 
-        o: ["Vội vàng, khẩn trương vì sợ địch phát hiện.", "Ung dung, tự tại, làm chủ hoàn cảnh, giao hòa thiên nhiên.", "Mệt mỏi sau một ngày gánh vác trọng trách.", "Trầm tư, tách biệt hoàn toàn khỏi ngoại cảnh."], 
-        c: 1 // Đáp án B
+    {
+        q: "Yếu tố nào làm cân bằng lại sự lạnh lẽo trong thơ Bác?",
+        o: [
+            "Hơi ấm của sự sống con người.", // ĐÚNG
+            "Sự ồn ào của tiếng chim kêu.", // Nhiễu (Chim kêu chỉ gợi buồn)
+            "Màu sắc sặc sỡ của hoa lá.", // Nhiễu
+            "Ánh nắng gay gắt của mặt trời.", // Nhiễu
+        ],
+        c: 0
     },
-    { 
-        q: "Sự kết hợp giữa không gian \"yên ba\" (cổ điển) và hoạt động \"đàm quân sự\" (hiện đại) mang giá trị gì?", 
-        o: ["Mong muốn thoát ly thực tại gian khổ.", "\"Hiện đại hóa\" thơ cổ, khẳng định kháng chiến giữa vẻ đẹp.", "Chứng minh sự đối lập gay gắt giữa thiên nhiên và chiến tranh.", "Làm cho bài thơ trở nên khó tiếp cận."], 
-        c: 1 // Đáp án B
+    {
+        q: "Trong bài 'Mộ', hình ảnh 'lò than rực hồng' có vai trò gì?",
+        o: [
+            "Xua tan cái lạnh và bóng tối.", // ĐÚNG
+            "Báo hiệu trời đã sáng hẳn.", // Nhiễu
+            "Thể hiện sự nghèo khó.", // Nhiễu
+            "Làm nền cho cô gái xuất hiện.", // Nhiễu
+        ],
+        c: 0
     },
-    { 
-        q: "Nhận định nào chính xác nhất về giá trị tư tưởng tổng quát của bài thơ?", 
-        o: ["Tác phẩm tả cảnh thuần túy, không có chính trị.", "Sức mạnh niềm tin cách mạng hòa quyện tình yêu thiên nhiên.", "Lời kêu gọi nhân dân tham gia kháng chiến.", "Sự bi quan, lo lắng về tương lai kháng chiến."], 
-        c: 1 // Đáp án B
+    {
+        q: "Từ 'mạn mạn' (Mộ) dịch là 'lững lờ' thể hiện tâm thế gì?",
+        o: [
+            "Ung dung tự tại.", // ĐÚNG
+            "Buồn bã chán chường.", // Nhiễu
+            "Vội vã gấp gáp.", // Nhiễu
+            "Sợ hãi lo âu.", // Nhiễu
+        ],
+        c: 0
+    },
+    {
+        q: "Vị thế của nhân vật trữ tình trong 'Mộ' và 'Nguyên tiêu' khác nhau thế nào?",
+        o: [
+            "Người tù bị động >< Lãnh tụ chủ động.", // ĐÚNG
+            "Người dân thường >< Quan lại phong kiến.", 
+            "Người đi đường >< Người ngồi nhà.", 
+            "Nạn nhân >< Kẻ chiến thắng.", 
+        ],
+        c: 0
+    },
+    {
+        q: "Bản dịch 'Trăng ngân đầy thuyền' (Nguyên tiêu) thêm yếu tố nào sai nguyên tác?",
+        o: [
+            "Âm thanh (Ngân).", // ĐÚNG
+            "Ánh sáng (Sáng).", 
+            "Màu sắc (Vàng).", 
+            "Cảm xúc (Vui).", 
+        ],
+        c: 0
+    },
+    {
+        q: "Quan niệm thời gian phương Đông trong 'Nguyên tiêu' thể hiện qua đâu?",
+        o: [
+            "Trăng tròn là điềm lành khởi đầu vận hội mới.", // ĐÚNG
+            "Trăng tròn là dấu hiệu của sự kết thúc.", 
+            "Trăng tròn báo hiệu mùa màng thất bát.", 
+            "Trăng tròn gợi nhớ quê hương cũ.", 
+        ],
+        c: 0
+    },
+    {
+        q: "Chất 'thép' trong 'Mộ' nằm ở đâu?",
+        o: [
+            "Bản lĩnh vượt lên hoàn cảnh.", // ĐÚNG
+            "Lời lẽ đanh thép tố cáo.", 
+            "Hành động phá ngục.", 
+            "Vũ khí mang theo người.", 
+        ],
+        c: 0
+    },
+    {
+        q: "Không gian trong 'Nguyên tiêu' vận động ra sao?",
+        o: [
+            "Từ vũ trụ bao la thu về con thuyền.", // ĐÚNG
+            "Từ con thuyền mở rộng ra vũ trụ.", 
+            "Từ bờ sông này sang bờ sông kia.", 
+            "Từ mặt đất bay lên bầu trời.", 
+        ],
+        c: 0
     }
 ];
 
@@ -259,6 +393,9 @@ const Maze = () => {
 
   return (
     <div className="maze-screen">
+      {/* --- ADDED: Nến ở màn hình chính --- */}
+      <FunnyCandle />
+
       <h1 className="hud-title">HỆ THỐNG TRUY QUÉT</h1>
 
       <div className="maze-grid" style={{opacity: killPhase === 'NAME' || status !== 'KILLED' ? 1 : 0.1}}>
@@ -297,6 +434,9 @@ const Maze = () => {
             )}
             {(killPhase === 'QUESTION' || killPhase === 'RESULT') && currentQuest && (
                 <div className="fullscreen-mode">
+                    {/* --- ADDED: Nến ở màn hình câu hỏi --- */}
+                    
+
                     <div className="score-badge">ĐIỂM SỐ: {currentScore}</div>
                     <div className="player-indicator">NGƯỜI CHƠI: {displayedName}</div>
                     
