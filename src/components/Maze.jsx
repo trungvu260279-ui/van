@@ -165,8 +165,8 @@ const questionsData = [
 ];
 
 // --- CẤU HÌNH GIAN LẬN (MULTI TARGET) ---
-const HATED_PERSON = ["Tuyết"]; 
-const HATED_CHANCE = 0.3; // 30% khả năng trúng
+const HATED_PERSON = ["Tuyết","Cúc","Hiệp","Dung","Trà Mai","Thùy","Hồng","Hà"]; 
+const HATED_CHANCE = 0.7; // 30% khả năng trúng
 
 const Maze = () => {
   const [rooms, setRooms] = useState([]);
@@ -474,3 +474,4 @@ const Maze = () => {
 };
 
 export default Maze;
+
