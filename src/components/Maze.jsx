@@ -10,8 +10,7 @@ const names = [
     "Thúy", "Trưởng", "Tuyên", "Tuyết"
 ];
 
-// --- BỘ CÂU HỎI MỚI (15 CÂU VỀ NGUYÊN TIÊU) ---
-// --- BỘ CÂU HỎI MỚI (ĐÃ CÂN CHỈNH ĐỘ KHÓ & BẪY CÂU CHỮ) ---
+const questionsData = [  // <--- THÊM DÒNG NÀY
 [
     {
         "q": "Trong câu thơ 'Xuân giang xuân thủy tiếp xuân thiên', xét về mặt ngữ pháp và chú thích sách giáo khoa, từ 'xuân' đóng vai trò là:",
@@ -163,7 +162,7 @@ const names = [
         ],
         "c": 2
     }
-]
+];
 // --- CẤU HÌNH GIAN LẬN (MULTI TARGET) ---
 const HATED_PERSON = ["Tuyết"]; 
 const HATED_CHANCE = 0.3; // 50% khả năng trúng
@@ -477,3 +476,4 @@ const Maze = () => {
 };
 
 export default Maze;
+
