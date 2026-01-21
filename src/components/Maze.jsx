@@ -12,261 +12,161 @@ const names = [
 
 // --- BỘ CÂU HỎI MỚI (15 CÂU VỀ NGUYÊN TIÊU) ---
 // --- BỘ CÂU HỎI MỚI (ĐÃ CÂN CHỈNH ĐỘ KHÓ & BẪY CÂU CHỮ) ---
-const questionsData = [
-    // --- LOẠI 1: BẪY "SONG SINH" (NHÌN GIỐNG HỆT NHAU, SAI 1 TỪ CUỐI) ---
+[
     {
-        q: "Nếu hiểu chữ 'hồng' (Mộ) chỉ là tính từ chỉ màu sắc thay vì động từ (nổi lửa) thì sai lệch lớn nhất là gì?",
-        o: [
-            "Làm mất đi vẻ đẹp cổ điển và tính ước lệ của thơ Đường.", // Nhiễu
-            "Mất đi sự vận động của hình tượng thơ từ bóng tối ra ánh sáng.", // ĐÚNG (Ánh sáng)
-            "Mất đi sự vận động của hình tượng thơ từ bóng tối ra màn đêm.", // SAI (Giống câu trên, thay 'ánh sáng' bằng 'màn đêm')
-            "Làm giảm đi tính nhạc của bài thơ.", // Nhiễu
+        "q": "Trong câu thơ 'Xuân giang xuân thủy tiếp xuân thiên', xét về mặt ngữ pháp và chú thích sách giáo khoa, từ 'xuân' đóng vai trò là:",
+        "o": [
+            "Danh từ chỉ thời gian làm chủ ngữ cho các thực thể giang, thủy, thiên.",
+            "Trạng ngữ chỉ bối cảnh không gian mùa xuân tại chiến khu Việt Bắc.",
+            "Định ngữ cho các danh từ, dùng để chỉ khí sắc và sức sống của thiên nhiên.",
+            "Động từ chỉ sự vận động nối tiếp nhau giữa các mảng không gian đêm rằm."
         ],
-        c: 1
+        "c": 2
     },
     {
-        q: "Hình ảnh 'cánh chim' trong bài 'Mộ' và 'người tù' có sự tương phản nào?",
-        o: [
-            "Cánh chim tự do về rừng - Người tù bị giải đi vô định.", // ĐÚNG
-            "Cánh chim tự do về rừng - Người tù được tha bổng về nhà.", // SAI (Giống vế đầu, sai vế sau)
-            "Cánh chim mệt mỏi - Người tù khỏe khoắn.", // Nhiễu
-            "Chim bay ngược gió - Người đi xuôi gió.", // Nhiễu
+        "q": "Chữ 'viên' trong cụm 'nguyệt chính viên' (phiên âm) được chú thích nhằm thể hiện ý niệm gì sâu sắc nhất?",
+        "o": [
+            "Sự tròn trịa tuyệt đối của hình khối vầng trăng rằm tháng Giêng.",
+            "Sự hội tụ đầy đủ của các thành viên trong hội nghị quân sự bí mật.",
+            "Ý niệm về một sức sống đang ở độ căng tràn và viên mãn.",
+            "Sự kết thúc của một chu kỳ thời gian trong ngày làm việc của lãnh tụ."
         ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Tại sao nói bài 'Nguyên tiêu' có sự kết hợp giữa chiến sĩ và thi nhân?",
-        o: [
-            "Vì Bác bàn việc quân xong thì ngắm trăng làm thơ.", // Nhiễu
-            "Vì trong cảnh khói sóng việc quân, vẫn có trăng tràn đầy thuyền.", // ĐÚNG
-            "Vì trong cảnh khói sóng việc quân, vẫn có súng đạn đầy thuyền.", // SAI (Giống cấu trúc, thay 'trăng' bằng 'súng đạn')
-            "Vì Bác vừa đánh giặc vừa viết văn.", // Nhiễu
+        "q": "Tại sao nói hình ảnh 'yên ba thâm xứ' trong thơ Hồ Chí Minh có sự khác biệt về tư thế so với thơ cổ điển?",
+        "o": [
+            "Trong thơ cổ nó gợi nỗi sầu nhân thế, trong thơ Bác nó gợi nỗi buồn chiến tranh.",
+            "Trong thơ cổ nó là cảnh giả tưởng, trong thơ Bác nó là cảnh tả thực hoàn toàn.",
+            "Trong thơ cổ con người thường bất lực trước khói sóng, trong thơ Bác con người chủ động bàn việc quân giữa khói sóng.",
+            "Trong thơ cổ nó chỉ xuất hiện vào buổi chiều, trong thơ Bác nó xuất hiện vào nửa đêm."
         ],
-        c: 1
+        "c": 2
     },
     {
-        q: "Sự vận động thời gian trong bài 'Mộ' đi theo chiều hướng nào?",
-        o: [
-            "Từ chiều tối đến đêm khuya, từ buồn sang vui.", // ĐÚNG
-            "Từ chiều tối đến đêm khuya, từ vui sang buồn.", // SAI (Ngược vế sau)
-            "Từ sáng sớm đến chiều tà.", 
-            "Thời gian ngưng đọng bất biến.", 
+        "q": "Xét về sự vận động của hình tượng thơ, nhận định nào sau đây là SAI khi nói về bài thơ Nguyên tiêu?",
+        "o": [
+            "Vận động từ không gian vũ trụ mênh mông về không gian con người cụ thể.",
+            "Vận động từ ánh sáng trăng rằm đến sự đầy ắp của trăng trên thuyền.",
+            "Vận động từ trạng thái thưởng ngoạn thiên nhiên sang trạng thái lo âu về quân sự.",
+            "Vận động từ thời điểm trăng vừa tròn đến thời điểm nửa đêm khuya."
         ],
-        c: 0
-    },
-
-    // --- LOẠI 2: ĐỘ DÀI NGẮN LỘN XỘN (GÂY NHIỄU TÂM LÝ) ---
-    {
-        q: "Việc dịch 'Sơn thôn thiếu nữ' thành 'Cô em xóm núi' (Mộ) gây ra hạn chế gì lớn nhất?",
-        o: [
-            "Mất trang trọng.", // Ngắn - ĐÚNG (Súc tích)
-            "Làm mất đi vẻ đẹp hiện đại, khỏe khoắn và tư thế chủ động của người lao động trong nguyên tác.", // Dài - Nhiễu (Nghe rất hay nhưng sai bản chất 'hiện đại')
-            "Sai ngữ pháp.", // Ngắn - Nhiễu
-            "Làm nhân vật già đi.", // Ngắn - Nhiễu
-        ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Điệp từ 'xuân' 3 lần trong 'Nguyên tiêu' có tác dụng gì?",
-        o: [
-            "Gợi sức sống lan tỏa, kết nối không gian thành khối thống nhất.", // Dài - ĐÚNG
-            "Tăng tính nhạc.", // Ngắn - Nhiễu
-            "Nhấn mạnh nỗi buồn mùa xuân.", // Ngắn - Nhiễu
-            "Tạo nhịp điệu dồn dập, hối hả như bước chân hành quân của người chiến sĩ.", // Dài - Nhiễu
+        "q": "Chú thích chỉ ra chữ 'mãn' được dùng như một động từ. Việc lựa chọn từ loại này giúp hình ảnh ánh trăng mang sắc thái gì?",
+        "o": [
+            "Tĩnh lặng và lan tỏa đều khắp không gian sông nước Việt Bắc.",
+            "Chủ động tràn xuống và làm đầy ắp con thuyền như một thực thể hữu hình.",
+            "Phản chiếu vẻ lấp lánh và âm thanh ngân vang trên mặt nước đêm khuya.",
+            "Che lấp các khoảng không gian trống trải trên con thuyền của người chiến sĩ."
         ],
-        c: 0
+        "c": 1
     },
     {
-        q: "Chữ 'Quyện' trong 'Mộ' nếu dịch là 'trôi nhẹ' thì mất đi ý nghĩa gì?",
-        o: [
-            "Sự mệt mỏi.", // Ngắn - Nhiễu
-            "Sự gắn bó, vấn vương của chòm mây với bầu trời, ẩn dụ cho nỗi lòng Bác.", // Dài - ĐÚNG
-            "Vẻ đẹp thiên nhiên hùng vĩ, tráng lệ của núi rừng lúc chiều tà.", // Dài - Nhiễu
-            "Sự lạnh lẽo.", // Ngắn - Nhiễu
+        "q": "Điểm 'bẫy' nhất khi so sánh giữa bản 'Dịch thơ' và 'Nguyên tác' ở câu cuối là gì?",
+        "o": [
+            "Bản dịch thơ dùng từ 'khuya' thay cho 'nửa đêm' làm sai lệch mốc thời gian.",
+            "Bản dịch thơ dùng từ 'bát ngát' làm mất đi sự chật hẹp của con thuyền.",
+            "Chữ 'ngân' (dịch thơ) thiên về ánh sáng/âm thanh, còn chữ 'mãn' (nguyên tác) thiên về khối lượng/sức chứa.",
+            "Bản dịch thơ dùng thể thơ lục bát làm mất đi tính trang trọng của thể thất ngôn."
         ],
-        c: 1
-    },
-
-    // --- LOẠI 3: ĐỘ DÀI Y HỆT NHAU (KHÓ ĐOÁN MÒ, PHẢI ĐỌC KỸ) ---
-    {
-        q: "Bản dịch câu 'Yên ba thâm xứ' thành 'Giữa dòng bàn bạc' thiếu sót điều gì?",
-        o: [
-            "Không gian bí mật, thâm nghiêm của việc quân.", // ĐÚNG
-            "Không gian lãng mạn, trữ tình của người thi sĩ.", // (Độ dài tương đương)
-            "Không gian ồn ào, náo nhiệt của buổi thắng trận.", // (Độ dài tương đương)
-            "Không gian rộng lớn, bao la của dòng sông Lô.", // (Độ dài tương đương)
-        ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Hình ảnh 'Nguyệt mãn thuyền' (Trăng đầy thuyền) biểu thị sự chuyển hóa nào?",
-        o: [
-            "Từ con thuyền việc quân thành con thuyền thi ca.", // ĐÚNG
-            "Từ con thuyền nhỏ bé thành con thuyền vĩ đại.", 
-            "Từ con thuyền chiến đấu thành con thuyền du lịch.", 
-            "Từ con thuyền ẩn nấp thành con thuyền công khai.", 
+        "q": "Thủ pháp 'vẽ mây nảy trăng' trong bài thơ này được thực hiện thông qua việc:",
+        "o": [
+            "Miêu tả chi tiết những đám mây khói trên dòng sông xuân để gợi trăng.",
+            "Dùng sức xuân lan tỏa của giang, thủy, thiên để tôn vinh vị thế của vầng trăng rằm.",
+            "Dùng sự vắng lặng của nơi thâm xứ để làm nổi bật tiếng bàn bạc việc quân.",
+            "Dùng hình ảnh con thuyền nhỏ bé để đối lập với bầu trời xuân bao la."
         ],
-        c: 0
+        "c": 1
     },
     {
-        q: "Bút pháp cổ điển thể hiện rõ nhất ở điểm nào trong hai bài thơ?",
-        o: [
-            "Sử dụng thi liệu ước lệ và bút pháp chấm phá.", // ĐÚNG
-            "Sử dụng ngôn ngữ đời thường và tả thực chi tiết.", 
-            "Sử dụng thể thơ tự do và nhịp điệu phá cách.", 
-            "Sử dụng hình ảnh con người làm trung tâm bức tranh.", 
+        "q": "Cụm từ 'dạ bán' (nửa đêm) đóng vai trò gì trong cấu trúc tâm trạng của nhân vật trữ tình?",
+        "o": [
+            "Đánh dấu sự kết thúc của một cảm hứng thơ ca lãng mạn.",
+            "Khẳng định cường độ làm việc tận tụy và phong thái ung dung giữa thời điểm chuyển giao.",
+            "Thể hiện sự mệt mỏi của người chiến sĩ sau những giờ bàn việc quân căng thẳng.",
+            "Là cái cớ để nhà thơ tìm đến vẻ đẹp của trăng sau khi đã hết việc."
         ],
-        c: 0
+        "c": 1
     },
     {
-        q: "Điểm chung về 'thi pháp' của Hồ Chí Minh trong hai bài thơ là gì?",
-        o: [
-            "Luôn vận động hướng về sự sống và ánh sáng.", // ĐÚNG
-            "Luôn tập trung miêu tả nỗi buồn và bóng tối.", 
-            "Luôn sử dụng điển cố điển tích cực kỳ khó hiểu.", 
-            "Luôn đề cao vai trò cá nhân hơn là cộng đồng.", 
+        "q": "Nhận định nào sau đây chỉ rõ sự kết hợp giữa 'chất thép' và 'chất tình' một cách chính xác nhất?",
+        "o": [
+            "Chất thép nằm ở thể thơ tứ tuyệt, chất tình nằm ở hình ảnh ánh trăng rằm.",
+            "Chất thép nằm ở việc phê phán kẻ thù, chất tình nằm ở tình yêu sông nước.",
+            "Chất thép nằm ở bản lĩnh bàn việc quân, chất tình nằm ở tâm hồn giao hòa cùng thiên nhiên.",
+            "Chất thép nằm ở khói sóng mịt mù, chất tình nằm ở con thuyền chở đầy trăng."
         ],
-        c: 0
-    },
-
-    // --- CÁC CÂU HỖN HỢP KHÁC ---
-    {
-        q: "Câu 'Kim dạ nguyên tiêu nguyệt chính viên' nhấn mạnh điều gì?",
-        o: [
-            "Vẻ đẹp tròn đầy viên mãn của trăng rằm.", // ĐÚNG
-            "Nỗi buồn man mác khi trăng sắp tàn.", 
-            "Sự cô đơn của con người dưới trăng.", 
-            "Ánh sáng chói chang làm lu mờ sao.", 
-        ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Yếu tố nào làm cân bằng lại sự lạnh lẽo trong thơ Bác?",
-        o: [
-            "Hơi ấm của sự sống con người.", // ĐÚNG
-            "Sự ồn ào của tiếng chim kêu.", // Nhiễu (Chim kêu chỉ gợi buồn)
-            "Màu sắc sặc sỡ của hoa lá.", // Nhiễu
-            "Ánh nắng gay gắt của mặt trời.", // Nhiễu
+        "q": "Từ 'tiếp' trong câu thơ thứ hai gắn kết ba danh từ nào để tạo nên không gian vô biên?",
+        "o": [
+            "Xuân giang - Xuân nhật - Xuân thiên.",
+            "Xuân giang - Xuân thủy - Xuân thiên.",
+            "Xuân giang - Xuân ba - Xuân thiên.",
+            "Xuân giang - Xuân thuyền - Xuân thiên."
         ],
-        c: 0
+        "c": 1
     },
     {
-        q: "Trong bài 'Mộ', hình ảnh 'lò than rực hồng' có vai trò gì?",
-        o: [
-            "Xua tan cái lạnh và bóng tối.", // ĐÚNG
-            "Báo hiệu trời đã sáng hẳn.", // Nhiễu
-            "Thể hiện sự nghèo khó.", // Nhiễu
-            "Làm nền cho cô gái xuất hiện.", // Nhiễu
+        "q": "Trong câu 'Yên ba thâm xứ đàm quân sự', mối liên hệ giữa không gian và hoạt động con người là:",
+        "o": [
+            "Đối lập gay gắt giữa sự tĩnh lặng của ngoại cảnh và sự ồn ào của việc quân.",
+            "Cách biệt hoàn toàn nhằm bảo mật cho cuộc họp quan trọng của lãnh đạo.",
+            "Hài hòa tuyệt đối: không gian thâm nghiêm làm tôn lên tính chất thiêng liêng của việc nước.",
+            "Tương hỗ: ánh trăng giúp con người nhìn rõ các bản đồ quân sự trên thuyền."
         ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Từ 'mạn mạn' (Mộ) dịch là 'lững lờ' thể hiện tâm thế gì?",
-        o: [
-            "Ung dung tự tại.", // ĐÚNG
-            "Buồn bã chán chường.", // Nhiễu
-            "Vội vã gấp gáp.", // Nhiễu
-            "Sợ hãi lo âu.", // Nhiễu
+        "q": "Nhận định nào sau đây là SAI khi nói về phong cách cổ điển trong Nguyên tiêu?",
+        "o": [
+            "Sử dụng thể thơ thất ngôn tứ tuyệt bằng chữ Hán chuẩn mực.",
+            "Sử dụng các thi liệu ước lệ: trăng rằm, khói sóng, con thuyền.",
+            "Sử dụng cái tôi cá nhân lẻ loi, sầu muộn trước vũ trụ bao la.",
+            "Sử dụng bút pháp chấm phá, gợi nhiều hơn tả trong bức tranh thiên nhiên."
         ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Bản dịch 'Trăng ngân đầy thuyền' (Nguyên tiêu) thêm yếu tố nào sai nguyên tác?",
-        o: [
-            "Âm thanh (Ngân).", // ĐÚNG
-            "Ánh sáng (Sáng).", 
-            "Màu sắc (Vàng).", 
-            "Cảm xúc (Vui).", 
+        "q": "Tại sao có thể nói hình ảnh 'trăng đầy thuyền' là một sự vận động từ bóng tối ra ánh sáng?",
+        "o": [
+            "Vì lúc đầu trăng bị khói che khuất, lúc sau trăng mới hiện ra rạng rỡ.",
+            "Vì lúc đầu bàn việc quân trong tối, lúc sau về nhà mới có ánh sáng trăng.",
+            "Vì ánh trăng tràn ngập thuyền gợi niềm tin thắng lợi, xua tan cái mịt mù của khói sóng.",
+            "Vì con thuyền đi từ nơi không có trăng đến nơi có ánh trăng rằm rực rỡ nhất."
         ],
-        c: 0
+        "c": 2
     },
     {
-        q: "Quan niệm thời gian phương Đông trong 'Nguyên tiêu' thể hiện qua đâu?",
-        o: [
-            "Trăng tròn là điềm lành khởi đầu vận hội mới.", // ĐÚNG
-            "Trăng tròn là dấu hiệu của sự kết thúc.", 
-            "Trăng tròn báo hiệu mùa màng thất bát.", 
-            "Trăng tròn gợi nhớ quê hương cũ.", 
+        "q": "Sự khác biệt về bối cảnh địa lý giữa bài thơ Mộ (Chiều tối) và Nguyên tiêu là:",
+        "o": [
+            "Mộ diễn ra ở Việt Bắc, Nguyên tiêu diễn ra ở Quảng Tây (Trung Quốc).",
+            "Mộ diễn ra trên đường đi lao ở Trung Quốc, Nguyên tiêu diễn ra tại chiến khu Việt Bắc.",
+            "Cả hai bài đều diễn ra tại chiến khu Việt Bắc nhưng thời điểm khác nhau.",
+            "Mộ diễn ra trên sông nước, Nguyên tiêu diễn ra ở vùng núi rừng hiểm trở."
         ],
-        c: 0
+        "c": 1
     },
     {
-        q: "Chất 'thép' trong 'Mộ' nằm ở đâu?",
-        o: [
-            "Bản lĩnh vượt lên hoàn cảnh.", // ĐÚNG
-            "Lời lẽ đanh thép tố cáo.", 
-            "Hành động phá ngục.", 
-            "Vũ khí mang theo người.", 
+        "q": "Ý nghĩa nhân văn sâu sắc nhất của bài thơ Nguyên tiêu nằm ở:",
+        "o": [
+            "Việc miêu tả thành công vẻ đẹp của đêm rằm tháng Giêng năm 1948.",
+            "Việc khẳng định tài năng sử dụng ngôn ngữ cổ điển bậc thầy của Hồ Chí Minh.",
+            "Việc khẳng định phong thái ung dung, tự tại và bản lĩnh của người chiến sĩ cách mạng.",
+            "Việc kêu gọi mọi người hãy biết tận hưởng vẻ đẹp của thiên nhiên ngay cả khi có chiến tranh."
         ],
-        c: 0
-    },
-    {
-        q: "Không gian trong 'Nguyên tiêu' vận động ra sao?",
-        o: [
-            "Từ vũ trụ bao la thu về con thuyền.", // ĐÚNG
-            "Từ con thuyền mở rộng ra vũ trụ.", 
-            "Từ bờ sông này sang bờ sông kia.", 
-            "Từ mặt đất bay lên bầu trời.", 
-        ],
-        c: 0
-    },
-    // --- 5 CÂU SIÊU KHÓ (BẪY CÂU CHỮ TINH VI) ---
-    {
-        q: "Trong bài 'Mộ', sự vận động của hình tượng thơ từ 'cánh chim, chòm mây' đến 'lò than rực hồng' phản ánh quy luật nào trong thi pháp của Bác?",
-        o: [
-            "Vận động từ thiên nhiên hoang sơ đến cuộc sống con người, từ nỗi buồn đến niềm vui.", // ĐÚNG (Chuẩn ý: Thiên nhiên -> Con người)
-            "Vận động từ thiên nhiên hoang sơ đến cuộc sống con người, từ tĩnh tại đến hư ảo.", // SAI (Sai chữ 'hư ảo', lò than là thực)
-            "Vận động từ không gian vũ trụ đến không gian đời thường, từ ánh sáng vào bóng tối.", // SAI (Ngược: Từ bóng tối ra ánh sáng)
-            "Vận động từ hình ảnh ước lệ cổ điển đến hình ảnh hiện thực, từ niềm vui đến nỗi buồn.", // SAI (Ngược cảm xúc)
-        ],
-        c: 0
-    },
-    {
-        q: "Vì sao nói bản dịch 'Giữa dòng bàn bạc việc quân' (Nguyên tiêu) đã làm giảm đi 'chất thép' so với nguyên tác 'Yên ba thâm xứ'?",
-        o: [
-            "Vì nó làm mất đi không gian hùng vĩ, tráng lệ của dòng sông đêm trăng.", // NHIỄU (Tập trung vào cảnh)
-            "Vì nó làm mất đi tính chất bí mật, thâm nghiêm và sự tĩnh lặng cần thiết của việc quân.", // ĐÚNG (Chuẩn ý: Bí mật/Thâm nghiêm)
-            "Vì nó làm mất đi tính chất lãng mạn, bay bổng và sự giao hòa thiên nhiên của thi sĩ.", // SAI (Ngược: Nguyên tác nhấn mạnh việc quân ở câu 3)
-            "Vì nó làm mất đi không gian mênh mông, bát ngát của khói sóng mùa xuân.", // NHIỄU
-        ],
-        c: 1
-    },
-    {
-        q: "Trong nguyên tác bài 'Nguyên tiêu', cụm từ 'Nguyệt mãn thuyền' (Trăng đầy thuyền) ở câu kết có mối liên hệ logic thế nào với câu 3?",
-        o: [
-            "Việc quân vừa dứt, con thuyền quân sự lập tức hóa thành con thuyền thi ca chứa đầy trăng.", // ĐÚNG (Sự chuyển hóa tức thời)
-            "Việc quân đang bàn, con thuyền quân sự song hành cùng con thuyền thi ca chứa đầy trăng.", // SAI (Sai thời điểm: 'đang bàn' vs 'vừa dứt')
-            "Việc quân vừa dứt, con thuyền thi ca biến mất để nhường chỗ cho ánh trăng tràn ngập.", // SAI (Thuyền không biến mất)
-            "Việc quân căng thẳng, ánh trăng làm dịu đi không khí nặng nề trên con thuyền.", // SAI (Suy diễn không có trong văn bản phân tích)
-        ],
-        c: 0
-    },
-    {
-        q: "Điểm khác biệt tinh tế nhất giữa 'cánh chim' trong thơ cổ và 'cánh chim' trong bài 'Mộ' của Bác là gì?",
-        o: [
-            "Thơ cổ: Cánh chim là biểu tượng của sự vĩnh cửu - Thơ Bác: Cánh chim là thực thể sống động.", // NHIỄU
-            "Thơ cổ: Cánh chim bay về nơi vô định - Thơ Bác: Cánh chim có điểm về cụ thể (về rừng/về tổ).", // ĐÚNG (Ý nghĩa sự sống/điểm tựa)
-            "Thơ cổ: Cánh chim gợi nỗi buồn ly biệt - Thơ Bác: Cánh chim gợi sự tự do tuyệt đối.", // SAI (Người tù không thấy tự do qua chim, mà thấy nhịp sống)
-            "Thơ cổ: Cánh chim bay vào hư không - Thơ Bác: Cánh chim bay ngược gió.", // NHIỄU
-        ],
-        c: 1
-    },
-    {
-        q: "Nếu không hiểu chữ 'Hồng' (Mộ) là động từ (nổi lửa) mà hiểu là tính từ (màu hồng), thì bức tranh thơ sẽ thiếu đi yếu tố cốt lõi nào?",
-        o: [
-            "Thiếu đi sự ấm áp của tình người trong đêm tối lạnh lẽo.", // NHIỄU (Đúng nhưng chưa đủ ý đồ nghệ thuật)
-            "Thiếu đi sự chủ động của con người trong việc xua tan bóng tối và giá lạnh.", // ĐÚNG (Nhấn mạnh sự CHỦ ĐỘNG/Sức mạnh con người)
-            "Thiếu đi vẻ đẹp rực rỡ của màu sắc tương phản với màn đêm núi rừng.", // SAI (Chỉ nói về thẩm mỹ, không nói về tư tưởng)
-            "Thiếu đi tính chất cổ điển trang trọng của thể thơ Đường luật.", // SAI (Cổ điển thường ít dùng hình ảnh lò than đời thường)
-        ],
-        c: 1
+        "c": 2
     }
-
-];
-
+]
 // --- CẤU HÌNH GIAN LẬN (MULTI TARGET) ---
-const HATED_PERSON = ["Kỳ Anh", "Hiệp"]; 
-const HATED_CHANCE = 0.5; // 50% khả năng trúng
+const HATED_PERSON = ["Tuyết"]; 
+const HATED_CHANCE = 0.3; // 50% khả năng trúng
 
 const Maze = () => {
   const [rooms, setRooms] = useState([]);
@@ -575,4 +475,5 @@ const Maze = () => {
     </div>
   );
 };
+
 export default Maze;
