@@ -10,8 +10,8 @@ const names = [
     "Thúy", "Trưởng", "Tuyên", "Tuyết"
 ];
 
-const questionsData = [  // <--- THÊM DÒNG NÀY
-[
+// --- BỘ CÂU HỎI MỚI (ĐÃ SỬA LỖI KHAI BÁO BIẾN & NGOẶC) ---
+const questionsData = [
     {
         "q": "Trong câu thơ 'Xuân giang xuân thủy tiếp xuân thiên', xét về mặt ngữ pháp và chú thích sách giáo khoa, từ 'xuân' đóng vai trò là:",
         "o": [
@@ -163,9 +163,10 @@ const questionsData = [  // <--- THÊM DÒNG NÀY
         "c": 2
     }
 ];
+
 // --- CẤU HÌNH GIAN LẬN (MULTI TARGET) ---
 const HATED_PERSON = ["Tuyết"]; 
-const HATED_CHANCE = 0.3; // 50% khả năng trúng
+const HATED_CHANCE = 0.3; // 30% khả năng trúng
 
 const Maze = () => {
   const [rooms, setRooms] = useState([]);
@@ -396,9 +397,6 @@ const Maze = () => {
             )}
             {(killPhase === 'QUESTION' || killPhase === 'RESULT') && currentQuest && (
                 <div className="fullscreen-mode">
-                    {/* --- ADDED: Nến ở màn hình câu hỏi --- */}
-                    
-
                     <div className="score-badge">ĐIỂM SỐ: {currentScore}</div>
                     <div className="player-indicator">NGƯỜI CHƠI: {displayedName}</div>
                     
@@ -476,4 +474,3 @@ const Maze = () => {
 };
 
 export default Maze;
-
